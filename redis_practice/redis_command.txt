@@ -1,0 +1,319 @@
+
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379> set 'user1' 'jack'
+OK
+127.0.0.1:6379> get 'user1'
+"jack"
+127.0.0.1:6379> set 'user1' 'jason'
+OK
+127.0.0.1:6379> get 'user1'
+"jason"
+127.0.0.1:6379> setex 'user2' 3 'eric'
+OK
+127.0.0.1:6379> get 'user2'
+(nil)
+127.0.0.1:6379> setex 'user2' 6 'eric'
+OK
+127.0.0.1:6379> get 'user2'
+"eric"
+127.0.0.1:6379> get 'user2'
+(nil)
+127.0.0.1:6379>  mget 'user3' 'ab' 'user4' 'cd'  'user5' 'ef' 'user6 'ed'
+Invalid argument(s)
+127.0.0.1:6379> mset 'user3' 'ab' 'user4' 'cd'  'user5' 'ef' 'user6 'ed'
+Invalid argument(s)
+127.0.0.1:6379> mset 'user3' 'abc' 'user4' 'bcd' 'user5' 'edf'
+OK
+127.0.0.1:6379> get 'user4'
+"bcd"
+127.0.0.1:6379> append 'user4' 'hello'
+(integer) 8
+127.0.0.1:6379> get 'user4'
+"bcdhello"
+127.0.0.1:6379> mget 'user3' 'user4'
+1) "abc"
+2) "bcdhello"
+127.0.0.1:6379> keys *
+1) "user5"
+2) "user1"
+3) "user4"
+4) "user3"
+127.0.0.1:6379> set 'user2' 'john'
+OK
+127.0.0.1:6379> keys *
+1) "user2"
+2) "user1"
+3) "user5"
+4) "user4"
+5) "user3"
+127.0.0.1:6379> set 'user6' 'david'
+OK
+127.0.0.1:6379> keys '*s*'
+1) "user6"
+2) "user2"
+3) "user1"
+4) "user5"
+5) "user4"
+6) "user3"
+127.0.0.1:6379> exists 'user5'
+(integer) 1
+127.0.0.1:6379> exists 'user7'
+(integer) 0
+127.0.0.1:6379> type 'user2'
+string
+127.0.0.1:6379> del 'user6'
+(integer) 1
+127.0.0.1:6379> del 'user5' 'user4'
+(integer) 2
+127.0.0.1:6379> expire 'user3' 20
+(integer) 1
+127.0.0.1:6379> get 'user3'
+"abc"
+127.0.0.1:6379> get 'user3'
+"abc"
+127.0.0.1:6379> get 'user3'
+(nil)
+127.0.0.1:6379> ttl 'user2'
+(integer) -1
+127.0.0.1:6379> ttl 'user3'
+(integer) -2
+127.0.0.1:6379> setex 'user4' 10 'aa'
+OK
+127.0.0.1:6379> ttl 'user4'
+(integer) 5
+127.0.0.1:6379> ttl 'user4'
+(integer) -2
+127.0.0.1:6379> setex 'user5' 30 'mike'
+OK
+127.0.0.1:6379> ttl 'user4'
+(integer) -2
+127.0.0.1:6379> ttl 'user5'
+(integer) 10
+127.0.0.1:6379> ttl 'user5'
+(integer) 1
+127.0.0.1:6379> setex 'user4' 30 'mike'
+OK
+127.0.0.1:6379> get ‘user4’ 
+(nil)
+127.0.0.1:6379> get ‘user4'
+Invalid argument(s)
+127.0.0.1:6379> setex 'user4' 30 'mike'
+OK
+127.0.0.1:6379> get 'user4'
+"mike"
+127.0.0.1:6379> setex 'user4' 30 'mike'
+OK
+127.0.0.1:6379> ttl 'user4'
+(integer) 20
+127.0.0.1:6379> ttl 'user4'
+(integer) 17
+127.0.0.1:6379> ttl 'user4'
+(integer) 14
+127.0.0.1:6379> ttl 'user4'
+(integer) 12
+127.0.0.1:6379> ttl 'user4'
+(integer) 8
+127.0.0.1:6379> ttl 'user4'
+(integer) 2
+127.0.0.1:6379> ttl 'user4'
+(integer) -2
+127.0.0.1:6379> hset 'user4' 'name' 'emily'
+(integer) 1
+127.0.0.1:6379> hgetall 'user4'
+1) "name"
+2) "emily"
+127.0.0.1:6379> hset 'user4' 'age' '13'
+(integer) 1
+127.0.0.1:6379> hgetall 'user4'
+1) "name"
+2) "emily"
+3) "age"
+4) "13"
+127.0.0.1:6379> hmset 'user5' 'name' 'julia' 'gender' 'female' 'age' '14'
+OK
+127.0.0.1:6379> hgetall 'user5'
+1) "name"
+2) "julia"
+3) "gender"
+4) "female"
+5) "age"
+6) "14"
+127.0.0.1:6379> hmset 'user5' 'name' 'judy' 'birthday' '01/01'
+OK
+127.0.0.1:6379> hgetall 'user5'
+1) "name"
+2) "judy"
+3) "gender"
+4) "female"
+5) "age"
+6) "14"
+7) "birthday"
+8) "01/01"
+127.0.0.1:6379> hkeys 'user5'
+1) "name"
+2) "gender"
+3) "age"
+4) "birthday"
+127.0.0.1:6379> hget 'user5' 'age'
+"14"
+127.0.0.1:6379> hvals 'user5'
+1) "judy"
+2) "female"
+3) "14"
+4) "01/01"
+127.0.0.1:6379> hdel 'user5' 'gender'
+(integer) 1
+127.0.0.1:6379> hgetall 'user5'
+1) "name"
+2) "judy"
+3) "age"
+4) "14"
+5) "birthday"
+6) "01/01"
+127.0.0.1:6379> lpush 'luser5' 'id' '005'
+(integer) 2
+127.0.0.1:6379> hgetall 'user5'
+1) "name"
+2) "judy"
+3) "age"
+4) "14"
+5) "birthday"
+6) "01/01"
+127.0.0.1:6379> lrange 'luser5' 0 -1
+1) "005"
+2) "id"
+127.0.0.1:6379> lpush 'luser5' 'lisa'
+(integer) 3
+127.0.0.1:6379> lrange 'luser5' 0 -1
+1) "lisa"
+2) "005"
+3) "id"
+127.0.0.1:6379> rpush 'luser5' 'age' '6'
+(integer) 5
+127.0.0.1:6379> lrange 'luser5' 0 -1
+1) "lisa"
+2) "005"
+3) "id"
+4) "age"
+5) "6"
+127.0.0.1:6379> linsert 'luser5'  after 'id' 'alpha'
+(integer) 6
+127.0.0.1:6379> lrange 'luser5' 0 -1
+1) "lisa"
+2) "005"
+3) "id"
+4) "alpha"
+5) "age"
+6) "6"
+127.0.0.1:6379> linsert 'luser5' before '005' 'number'
+(integer) 7
+127.0.0.1:6379> lrange 'luser5' 0 -1
+1) "lisa"
+2) "number"
+3) "005"
+4) "id"
+5) "alpha"
+6) "age"
+7) "6"
+127.0.0.1:6379> lset 'luser5' 2 '001'
+OK
+127.0.0.1:6379> lrange 'luser5' 0 -1
+1) "lisa"
+2) "number"
+3) "001"
+4) "id"
+5) "alpha"
+6) "age"
+7) "6"
+127.0.0.1:6379> sadd 'suser1' 'bob' 'age' '5'
+(integer) 3
+127.0.0.1:6379> smembers 'suser1'
+1) "age"
+2) "5"
+3) "bob"
+127.0.0.1:6379> sadd 'suser1' 'bob' 'boy'
+(integer) 1 
+127.0.0.1:6379> smembers 'suser1'
+1) "age"
+2) "5"
+3) "bob"
+4) "boy"
+127.0.0.1:6379> smembers 'suser1'
+1) "age"
+2) "5"
+3) "bob"
+4) "boy"
+127.0.0.1:6379> srem 'suser1' 'age'
+(integer) 1
+127.0.0.1:6379> smembers 'suser1'
+1) "5"
+2) "bob"
+3) "boy"
+127.0.0.1:6379> zadd 'zuser1' 1 'abby' 5 'jason' 8 'alpha' 3 'bravo'
+(integer) 4
+127.0.0.1:6379> zrange 'zuser1' 0 -1
+1) "abby"
+2) "bravo"
+3) "jason"
+4) "alpha"
+127.0.0.1:6379> zadd 'zuser1' 10 'bravo'
+(integer) 0
+127.0.0.1:6379> zrange 'zuser1' 0 -1
+1) "abby"
+2) "jason"
+3) "alpha"
+4) "bravo"
+127.0.0.1:6379> zadd 'zuser1' 12 'jude'
+(integer) 1
+127.0.0.1:6379> zrange 'zuser1' 0 -1
+1) "abby"
+2) "jason"
+3) "alpha"
+4) "bravo"
+5) "jude"
+127.0.0.1:6379> zadd 'zuser1' 12 'amy'
+(integer) 1
+127.0.0.1:6379> zadd 'zuser1' 12 'zack'
+(integer) 1
+127.0.0.1:6379> zrange 'zuser1' 0 -1
+1) "abby"
+2) "jason"
+3) "alpha"
+4) "bravo"
+5) "amy"
+6) "jude"
+7) "zack"
+127.0.0.1:6379> zrangebyscore 'zuser1' 1 12
+1) "abby"
+2) "jason"
+3) "alpha"
+4) "bravo"
+5) "amy"
+6) "jude"
+7) "zack"
+127.0.0.1:6379> zrangebyscore 'zuser1' 3 12
+1) "jason"
+2) "alpha"
+3) "bravo"
+4) "amy"
+5) "jude"
+6) "zack"
+127.0.0.1:6379> zscore 'zuser1' 'alpha'
+"8"
+127.0.0.1:6379> zrem 'zuser1' 'alpha'
+(integer) 1
+127.0.0.1:6379> zrange 'zuser1' 0 -1
+1) "abby"
+2) "jason"
+3) "bravo"
+4) "amy"
+5) "jude"
+6) "zack"
+127.0.0.1:6379> zremrangebyscore 'zuser1' 1 5
+(integer) 2
+127.0.0.1:6379> zrange 'zuser1' 0 -1
+1) "bravo"
+2) "amy"
+3) "jude"
+4) "zack"
