@@ -66,3 +66,10 @@ name_list = ["jack", "andy", "bob"]
 # print(name_list)
 #
 #"error, name_list is not defined"
+
+#
+# for my_name in name_list:
+#
+#     print("My name is　%s" % my_name)
+
+
