@@ -32,4 +32,4 @@ class Base:
 
     # get screen shot
     def base_get_image(self):
-        self.driver.get_screenshot_as_file("./image/fail.png")
+        self.driver.get_screenshot_as_file("../image/fail.png")
