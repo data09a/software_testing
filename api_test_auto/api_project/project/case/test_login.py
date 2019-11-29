@@ -23,7 +23,7 @@ class TestLogin(unittest.TestCase):
 
         s = ApiLogin().api_post_login(url, mobile, code)
 
-        print("查看响应结果：", s.json())
+        print("Response result：", s.json())
 
         self.assertEquals(expect_result, s.json()['message'])
 
