@@ -1,0 +1,56 @@
+1、Login API
+	1.1 Request Login API
+		Request
+			1). request url:http://ttapi.research.itcast.cn/app/v1_0/authorizations
+			2). method：post
+			3). parameter：Headers = {"Content-Type": "application/json	"}
+			4). data：
+				{"mobile": "123123123","code": 888888}
+		Response:
+			1). status code：201
+			2). response
+				{"message":"xxx"}
+
+	1.2 Fetch message verify code：
+		1). request url：http://ttapi.research.itcast.cn/app/v1_0/sms/codes/:mobile
+		    （mobile:phone number）
+		2). status code：200
+		3). method：GET
+
+	Tips：
+		1. Verify code can only be sent once every minute
+
+2、Fetch User Channel List
+	2.1 Request：
+		1). request url：http://ttapi.research.itcast.cn/app/v1_0/user/channels
+		2). method：GET
+		3). parameter：Headers = {"Content-Type":"application/json",
+					"Authorization":"Bearer token message"}
+		Tips：token is only valid for 2 hours。
+	2.2 Response：
+		1). status code：200
+		2). response：{"message":"xxx"}
+3、Add Article to Bookmarks
+	3.1 Request:
+		1). request url：http://ttapi.research.itcast.cn/app/v1_0/article/collections
+		2). method：post
+		3). parameter:
+			Headers = {"Content-Type":"application/json",
+					"Authorization":"Bearer token message"}
+
+		4). Data
+			{"target":article_id}
+	3.2 Response:
+		1). status code：201
+		2). response：{"message":"xxx"}
+
+4、Remove Article From Bookmarks
+	4.1 Request:
+		1). request url：http://ttapi.research.itcast.cn/app/v1_0/article/collections/:target
+		(:target is article id)
+		2). parameter：
+			Headers = {"Content-Type":"application/x-www-form-urlencoded",
+					"Authorization":"Bearer token message"}
+		3). method：DELETE
+	4.2 Response:
+		1). 204
