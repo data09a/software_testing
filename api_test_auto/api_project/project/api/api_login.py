@@ -13,7 +13,6 @@
 # import requests
 import requests
 
-
 # new class  for login
 
 class ApiLogin(object):

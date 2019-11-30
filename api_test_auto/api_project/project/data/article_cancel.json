@@ -1,0 +1,5 @@
+{
+  "url": "http://xxx.com/app/v1_0/article/collections/1",
+  "headers": {"Content-Type": "application/x-www-form-urlencoded","Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTAyNTg3MDksInVzZXJfaWQiOjU3LCJyZWZyZXNoIjpmYWxzZX0.1P7ksBYRR3DuDdsAfDynB_jl_MJCkjwkwRC_roJx6OE"},
+  "status_code": 204
+}

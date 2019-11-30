@@ -1,0 +1,7 @@
+{
+  "url": "http://xxx.com/app/v1_0/article/collections",
+  "headers": {"Content-Type": "application/json","Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTAyNTg3MDksInVzZXJfaWQiOjU3LCJyZWZyZXNoIjpmYWxzZX0.1P7ksBYRR3DuDdsAfDynB_jl_MJCkjwkwRC_roJx6OE"},
+  "data": {"target": 1},
+  "expect_result": "OK",
+  "status_code": 201
+}
