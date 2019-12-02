@@ -1,0 +1,15 @@
+{
+  "login_001":{
+                "url":"http://xxx.com/app/v1_0/authorizations",
+                "mobile": "2121045300",
+                "code": "",
+                "expect_result": "OK",
+                "status_code": 201},
+  "login_002":{
+                "url":"http://xxx.com/app/v1_0/authorizations",
+                "mobile": "2121045300",
+                "code": "",
+                "expect_result": {"mobile": "2121045300 is not a valid mobile"},
+                "status_code": 400}
+
+}

@@ -27,4 +27,3 @@ class ApiLogin(object):
 
         # return post
         return requests.post(url, headers=headers, json=data)
-
