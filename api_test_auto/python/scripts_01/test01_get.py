@@ -13,7 +13,7 @@
 import requests
 
 # 2.  get url
-url = "http://www.msn.com"
+url = "http://www.google.com"
 r = requests.get(url)
 
 # 3. fetch

@@ -11,7 +11,7 @@
 import requests
 
 
-url = "http://www.msn.com"
+url = "http://www.google.com"
 
 
 # # case 1
@@ -25,7 +25,7 @@ url = "http://www.msn.com"
 params = {"id": 1001, "kw": "NYC"}
 r = requests.get(url, params=params)
 
-print("Request url:", r.url)
+print("Request url: ", r.url)
 
 print("Status code：", r.status_code)
 
